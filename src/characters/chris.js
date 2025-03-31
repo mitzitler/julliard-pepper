@@ -127,6 +127,12 @@ export const dialogueAllChrisStandard =
             "Also, the little cherry designs are cute but I think people will get confused.",
             "I don't know anyone normal who knows about all these peppercorn variations, so I think these labels need to be really clear.",
             "But.. I really enjoy the vibe of it! For real."
+        ]},
+        "chris-2-b" : {"succeed" : [
+            "Wow, thanks so much. I'm typically more normal about these things.",
+            "I guess it's just cause we all work together. I think I'll see if she wants to go to a stupid expensive dinner anyway.",
+            "Alright yeah cool. If you wanna come to beers with us later that would be cool you know you're always good with us.",
+            "You're 'downstairs' with us sooo"
         ]}
     }
 

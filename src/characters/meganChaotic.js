@@ -141,6 +141,7 @@ export const dialogueAllMeganChaoticStandard =
 }};
 
 export const dialogueAllMeganChaoticNonStandard = 
+    // i think this should actually only trigger in one location - for consistency
     {"X" : { // initiates only if task "megangood-1" is done
         "task" : {"meganchaotic-1" : ["Did you move the flower stack in the northeast corner?",
             "Um. I guess I get why you did that, but you shouldn't have.",
