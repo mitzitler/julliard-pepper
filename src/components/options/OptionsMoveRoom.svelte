@@ -1,10 +1,18 @@
 <script lang="ts">
     import { rooms, roomsPaths, roomsItems } from '$lib/map.ts'
-    import { location, localTime } from '$lib/state.svelte.js'
+    import { location, localTime, interfaceStuff } from '$lib/state.svelte.js'
+
+    let showRoomOptions = true
+
+    function handleShowRoomOptions() {
+        showRoomOptions = !showRoomOptions;
+    }
 
 </script>
 
-{#if roomsPaths[location.code] && location.open === true}
+{#if roomsPaths[location.code] 
+    && interfaceStuff.expandedId === 'moveroom'
+    && showRoomOptions === true}
     <div class="dropdown-wrapper">
         <ul class="parent">
             {#each Object.entries(roomsPaths[location.code]) as [nextLocation, directions]}
@@ -17,8 +25,7 @@
                                 rooms[nextLocation],
                                 roomsItems[nextLocation]["description"]);
                             localTime.addTime();
-                            location.closeMoveRoom();
-                            location.newRoomInterface()
+                            handleShowRoomOptions()
                             }}
                         disabled = {nextLocation === 'E'}
                         >
