@@ -3,9 +3,6 @@
     import { inventory } from '$lib/state.svelte.js'
     delete inventory.inventoryDict[0]
 
-    console.log(inventory.inventoryDict[0])
-    console.log('inventory component had fired')
-
 </script>
 
 <div class="flex flex-wrap bg-sky-500/50">
@@ -17,7 +14,6 @@
         {#if !inventory.usedItems.includes(item)}
             <ul>
                 {item}
-                {console.log(inventory.inventoryDict)}
             </ul>
         {/if}
     {/each}
