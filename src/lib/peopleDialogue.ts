@@ -1,12 +1,12 @@
-import { dialogueAllBranStandard, dialogueAllBranNonStandard } from "../characters/bran.js";
-import { dialogueAllChrisStandard, dialogueAllChrisNonStandard } from "../characters/chris.js";
-import { dialogueAllClareStandard, dialogueAllClareNonStandard } from "../characters/clare.js";
+import { dialogueAllBran, dialogueAllBranStandard, dialogueAllBranNonStandard } from "../characters/bran.js";
+import { dialogueAllChris, dialogueAllChrisStandard, dialogueAllChrisNonStandard } from "../characters/chris.js";
+import { dialogueAllClare, dialogueAllClareStandard, dialogueAllClareNonStandard } from "../characters/clare.js";
 import { dialogueAllDog } from "../characters/dog.js";
-import { dialogueAllJoweStandard, dialogueAllJoweNonStandard } from "../characters/jowe.js";
-import { dialogueAllMarkStandard, dialogueAllMarkNonStandard } from "../characters/mark.js";
-import { dialogueAllMeganChaoticStandard, dialogueAllMeganChaoticNonStandard } from "../characters/meganChaotic.js";
-import { dialogueAllMeganGoodStandard, dialogueAllMeganGoodNonStandard } from "../characters/meganGood.js";
-import { dialogueAllMeganNeutralStandard, dialogueAllMeganNeutralNonStandard, dialogueAllMeganNeutral } from "../characters/meganNeutral.js";
+import { dialogueAllJowe, dialogueAllJoweStandard, dialogueAllJoweNonStandard } from "../characters/jowe.js";
+import { dialogueAllMark, dialogueAllMarkStandard, dialogueAllMarkNonStandard } from "../characters/mark.js";
+import { dialogueAllMeganChaotic, dialogueAllMeganChaoticStandard, dialogueAllMeganChaoticNonStandard } from "../characters/meganChaotic.js";
+import { dialogueAllMeganGood, dialogueAllMeganGoodStandard, dialogueAllMeganGoodNonStandard } from "../characters/meganGood.js";
+import { dialogueAllMeganNeutral, dialogueAllMeganNeutralStandard, dialogueAllMeganNeutralNonStandard } from "../characters/meganNeutral.js";
 
 // in both cases, the code X means it can be anywhere
 // top level added to the typing for the character name

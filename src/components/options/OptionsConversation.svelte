@@ -1,6 +1,6 @@
 <script>
-    import { location, localTime, conversation } from '$lib/state.svelte.js'
-    import { placesPeople } from '../../lib/people.js'
+    import { location, localTime, conversation, tasks } from '$lib/state.svelte.js'
+    import { placesPeople } from '../../lib/peopleDialogue.ts'
 
     // unbound by time
     // @ts-ignore
@@ -11,56 +11,16 @@
         localTime.timeInt >= v[0] && localTime.timeInt <= v[1]
     ))
 
-     // this is the analogue code in room scan
-    //     let normalItemsArray = Object.values(roomsItems[location.code]["items"])
-    // let specialItemsArray = []
-    // let getMostActiveStepsTasks = []
+    // this gets the most recently active task step
+    let getMostActiveStepsTasks = []
+    Object.keys(tasks.stepsTasks).forEach(taskId => {
+        let stepsArray = tasks.stepsTasks[taskId]
+        let activeStep = stepsArray[stepsArray.length - 1]
+        getMostActiveStepsTasks.push(activeStep)
+    });
 
-    // Object.keys(tasks.stepsTasks).forEach(taskId => {
-    //     let stepsArray = tasks.stepsTasks[taskId]
-    //     let activeStep = stepsArray[stepsArray.length - 1]
-    //     getMostActiveStepsTasks.push(activeStep)
-    // });
-
-    // roomsItems[location.code]["itemsTaskOnly"].forEach(item => {
-    //    if (getMostActiveStepsTasks.includes(itemsByTask[item]['taskIdStep'])) {
-    //     specialItemsArray.push(item)
-    //    } 
-    // })
-
-    // const handleUseItemClick = (item) => {
-
-    //     let taskIdStep = itemsByTask[item]['taskIdStep']
-    //     let taskId = `${taskIdStep.split('-')[0]}-${taskIdStep.split('-')[1]}`
-
-    //     console.log(taskId, taskIdStep, item)
-
-    //     let continuee = false
-
-    //     continuee = inventory.itemTaskStep(
-    //         taskIdStep, 
-    //         tasksBySteps,
-    //         location.code,
-    //         itemsByTask[item]['discardItem']
-    //     )
-
-    //     console.log('do we continue?', continuee[taskIdStep])
-
-    //     let incrementYay = false
-
-    //     incrementYay = tasks.incrementTask(
-    //         taskId,
-    //         tasksBySteps
-    //     )
-
-    //     incrementYay && tasks.completeTask(taskId)
-
-    //     localTime.addTime()
-
-        // console.log('By clicking this task item, you have worked on the step', taskIdStep, 'of task', 
-        //     taskId, 'this step was of type', tasksBySteps['steps'][taskIdStep]['task_type'])
-
-    // };
+    // placePeopleBound is still the only source of conversation
+    // i think!
 
 </script>
 

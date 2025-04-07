@@ -7,11 +7,20 @@
 
     import Dialogue from './display/Dialogue.svelte'
     import CharacterImage from './display/CharacterImage.svelte'
+    import StepDisplay from './display/StepDisplay.svelte'
 
     import { rooms, roomsItems, roomsPaths } from  '$lib/map.ts'
-    import { location, localTime, conversation } from '$lib/state.svelte.js'
+    import { location, interfaceStuff, conversation, inventory } from '$lib/state.svelte.js'
 
-    let expandedId = $state("")
+    // let expandedId = $state("")
+
+    // all this comes from
+    // https://stackoverflow.com/questions/71902375/how-to-call-function-from-another-component-to-another-component
+    // function handleStepAnnouncementDisplay({ stepAnnouncement }) {
+    //     console.log('okay', stepAnnouncement)
+    // }
+
+    // let stepdisplay
 
 </script>
 
@@ -20,37 +29,20 @@
         <div class="options grid grid-cols-3 gap-x-4">
 
             <button class="indicates-consuming-time mt-2 mx-auto items-center" id="roomscan" onclick={() => {
-                location.oldRoomInterface()
-                if (expandedId != "") {
-                    expandedId = ""
-                } else {
-                    expandedId = "roomscan"
-                }
+                interfaceStuff.clickRoomScan()
+                console.log('interfaceStuff.clickRoomScan() went fine')
             }}>
                 <strong>Scan</strong><br> the area
             </button>
 
-            <!-- should their be a conversation.openDialogue() and closeDialogue() as well? -->
             <button class="indicates-consuming-time mt-2 mx-auto items-center" id="dialogue" onclick={() => {
-                location.oldRoomInterface()
-                if (expandedId != "") {
-                    expandedId = ""
-                } else {
-                    expandedId = "dialogue"
-                }
+                interfaceStuff.clickConversationOptions()
             }}>
                 <strong>Talk</strong><br> to someone
             </button>
 
             <button class="indicates-consuming-time mt-2 mx-auto items-center" id="moveroom" onclick={() => {
-                location.oldRoomInterface()
-                if (expandedId != "") {
-                    expandedId = "";
-                    location.closeMoveRoom()
-                } else {
-                    expandedId = "moveroom"
-                    location.openMoveRoom()
-                }
+                interfaceStuff.clickMoveRooms()
             }}>
                 <strong>Move</strong><br> around rooms
             </button>
@@ -58,26 +50,25 @@
             {#if conversation.character === ''}
                 <div class="col-span-3 grid grid-cols-subgrid gap-x-4">
                     <div class="col-start-1 mx-auto items-center">
-                        {#if (expandedId === "roomscan")}
+                        {#if (interfaceStuff.expandedId === "roomscan")}
                         <OptionsRoomScan />
                         {/if}
                     </div>
 
                     <div class="col-start-2 col-span-2 mx-auto items-center">
-                        {#if (expandedId === "roomscan")}
+                        {#if (interfaceStuff.expandedId === "roomscan")}
                         <RoomScanDescription />
                         {/if}
                     </div>
 
                     <div class="col-start-2 mx-auto items-center">
-                        {#if (expandedId === "dialogue")}
+                        {#if (interfaceStuff.expandedId === "dialogue")}
                         <OptionsConversation />
                         {/if}
                     </div>
 
                     <div class="col-start-3 mx-auto items-center">
-                        {#if (expandedId === "moveroom")}
-                        <!-- onclick={() => expandedId = ""}/> -->
+                        {#if (interfaceStuff.expandedId === "moveroom")}
                         <OptionsMoveRoom />  
                         {/if}
                     </div>
@@ -86,7 +77,7 @@
             {:else} 
 
                 <div class="col-start-1 col-span-2 mx-auto items-center">
-                    {#if (expandedId === "dialogue")} <!-- and openDialogue = true ? -->
+                    {#if (interfaceStuff.expandedId === "dialogue")} <!-- and openDialogue = true ? -->
                     <CharacterImage />
                     {/if}
                 </div>
@@ -106,6 +97,14 @@
         
             {#if (conversation.character === '' || location.newRoom === true)}
                 <div class="text-center relative">
+                    <!-- <div class='announcement'>
+
+                        <Dialogue class="task-announcement" on:conversation-ended={handleStepAnnouncementDisplay}/> 
+
+                        <StepDisplay bind:this={stepdisplay}/>
+
+                    </div> -->
+
                     <div class="room-description">
                         {location.description}
                     </div>
